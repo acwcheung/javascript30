@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drum Kit</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div>
+		<ul>
+			<li data-key="65" class="key">A</li>
+			<li data-key="83" class="key">S</li>
+			<li data-key="68" class="key">D</li>
+			<li data-key="70" class="key">F</li>
+			<li data-key="71" class="key">G</li>
+			<li data-key="72" class="key">H</li>
+			<li data-key="74" class="key">J</li>
+			<li data-key="75" class="key">K</li>
+			<li data-key="76" class="key">L</li>
+		</ul>
+	</div>
+
+	<audio data-key="65" src="sounds/clap.wav"></audio>
+	<audio data-key="83" src="sounds/hihat.wav"></audio>
+	<audio data-key="68" src="sounds/kick.wav"></audio>
+	<audio data-key="70" src="sounds/openhat.wav"></audio>
+	<audio data-key="71" src="sounds/boom.wav"></audio>
+	<audio data-key="72" src="sounds/ride.wav"></audio>
+	<audio data-key="74" src="sounds/snare.wav"></audio>
+	<audio data-key="75" src="sounds/tom.wav"></audio>
+	<audio data-key="76" src="sounds/tink.wav"></audio>
+	<script>
+		
+		const playSound = (e) => {
+			const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);  
+			const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+			if(!audio) return;
+			audio.currentTime = 0;
+			audio.play();
+			key.classList.add("playing");
+			audio.onended = () => {
+				key.classList.remove("playing");
+			};
+		}
+
+		
+		window.addEventListener("keydown", playSound);
+
+		//keydown, keycode
+		//keycode, identify the key and audio clip
+		//play audio
+		//add class to key
+		//identify the key transformend?
+		//remove the class
+
+
+	</script>
+
+</body>
+</html>

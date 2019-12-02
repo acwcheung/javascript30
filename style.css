@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	background-image: url("image/beatles.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+ul {
+	width: 80%;
+	height: 100vh;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-family: Verdana;
+	font-size: 30px;
+	color: white;
+}
+
+.key {
+	list-style: none;
+	padding: 10px 20px;
+	border: 2px solid white;
+	border-radius: 10px;
+	transition: all 0.03;
+}
+
+.playing {
+	transform: scale(1.2);
+	border: 2px solid yellow;
+}
