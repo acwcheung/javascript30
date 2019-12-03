@@ -37,12 +37,15 @@
 			audio.currentTime = 0;
 			audio.play();
 			key.classList.add("playing");
-			audio.onended = () => {
-				key.classList.remove("playing");
-			};
 		}
 
-		
+		const keys = document.getElementsByClassName("key");
+		keys.forEach(key => key.addEventListener('transitionend', removeClass))
+
+		const removeClass = (e) => {
+			console.log(e);
+		}
+
 		window.addEventListener("keydown", playSound);
 
 		//keydown, keycode
