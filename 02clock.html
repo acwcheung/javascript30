@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clock</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="clock">
+	<div class="clock">
+		<div class="clock-face">
+			<div class="hand second-hand"></div>
+			<div class="hand min-hand"></div>
+			<div class="hand hour-hand"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		let secHand = document.querySelector(".second-hand");
+		let minHand = document.querySelector(".min-hand");
+		let hourHand = document.querySelector(".hour-hand");
+
+		const timer = () => {
+			let date = new Date();
+			
+			let seconds = date.getSeconds();
+			let secDegrees = seconds/60 * 365 + 90; 
+			secHand.style.transform = `rotate(${secDegrees}deg)`;
+
+			let minutes = date.getMinutes();
+			let minDegrees = minutes/60 * 365 + 90; 
+			minHand.style.transform = `rotate(${minDegrees}deg)`;
+			
+			let hours = date.getHours();
+			let hourDegrees = hours/12 * 365 + 90; 
+			hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+		}
+
+		setInterval(timer, 1000);
+
+		//transform ratate 
+		//transform-origin - on the center point
+		//transition
+		//transition-timing-function: cubic-bezier
+		//setInterval(func, 1000)
+		//get second of the date => degree
+		//secconds/60 * 360
+		//style.transform(``)
+
+
+	</script>
+</body>
+</html>

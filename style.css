@@ -1,11 +1,13 @@
-body {
+/*01-drum kit*/
+
+body.drum-kit {
 	margin: 0;
 	background-image: url("image/beatles.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 
-ul {
+ul.drum-kit {
 	width: 80%;
 	height: 100vh;
 	margin: auto;
@@ -29,3 +31,59 @@ ul {
 	transform: scale(1.2);
 	border: 2px solid yellow;
 }
+
+/*02-clock*/
+
+body.clock {
+	margin:0;
+	background-color: lightgrey;
+
+}
+
+div.clock {
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	border: 10px solid black;
+	position: relative;
+	margin: 20% auto;
+	padding: 20px;
+}
+
+div.clock-face {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform: translateY(-3px);
+}
+
+div.hand {
+	height: 5px;
+	width: 50%;
+	background-color: black;
+	position: absolute;
+	margin-top: 50%;
+	transform-origin: 100%;
+	transform: rotate(90deg);
+	transition: all 0.05s cubic-bezier(0.1, 2.7, 0.58, 1);
+
+}
+
+div.min-hand {
+	width: 40%;
+	position: absolute;
+	top: 0;
+	left: 10%;
+	background-color: red;
+}
+
+div.hour-hand {
+	width: 30%;
+	position: absolute;
+	top: 0;
+	left: 20%;
+	background-color: red;
+	height: 8px;
+}
+
+
