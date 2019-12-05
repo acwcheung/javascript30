@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS variables and JS</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Update CSS Variables with <span>JS</span></h1>
+
+	<div class="control">
+		<label>Spacing:</label>
+		<input id="spacing" type="range" name="spacing" min="0" max="200" value="10" data-sizing="px">
+		
+		<label>Blur:</label>
+		<input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+		
+		<label>Base Color</label>
+		<input type="color" name="base" value="#ffc600">
+	</div>
+
+	<img src="https://source.unsplash.com/daily">
+	
+	<style>
+		body {
+			text-align: center;
+			font-family: Verdana;
+		}
+		div.control {
+			margin: 50px 0;
+		}
+
+		:root {
+			--spacing: 10px;
+			--blur: 0;
+			--base: #ffc600;
+		}
+
+		img {
+			padding: var(--spacing);
+			background: var(--base);
+			filter: blur(var(--blur));
+		}
+
+		h1 span {
+			color: var(--base);
+		}
+
+	</style>
+
+
+	<script>
+		const spacing = document.getElementById("spacing");
+		
+		const handleUpdate = () => {
+			document.documentElement.style.setProperty("--spacing", spacing.value + 'px');
+		}
+ 
+ 		spacing.addEventListener('change', handleUpdate);
+		
+
+		//queryselector - not an array, limited methods
+		//this.dataset - everything under attribute data-
+		//select the input
+		//event - change
+		//add property
+		//select variable in style block - select entire doc, set property(name), 
+
+
+
+	</script>
+</body>
+</html>
