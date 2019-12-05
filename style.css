@@ -24,7 +24,7 @@ ul.drum-kit {
 	padding: 10px 20px;
 	border: 2px solid white;
 	border-radius: 10px;
-	transition: all 0.03;
+	transition: all 0.07s ease;
 }
 
 .playing {

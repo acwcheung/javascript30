@@ -38,21 +38,21 @@
 			audio.play();
 			key.classList.add("playing");
 		}
-
-		const keys = document.getElementsByClassName("key");
-		keys.forEach(key => key.addEventListener('transitionend', removeClass))
-
-		const removeClass = (e) => {
-			console.log(e);
+		
+		function removeTransition(e) {
+			if(e.propertyName !== 'transform') return;
+			this.classList.remove("playing");
 		}
 
+		const keys = document.querySelectorAll(".key");
+		keys.forEach(key => key.addEventListener('transitionend', removeTransition))
 		window.addEventListener("keydown", playSound);
 
 		//keydown, keycode
 		//keycode, identify the key and audio clip
 		//play audio
 		//add class to key
-		//identify the key transformend?
+		//identify the key with event transitionend
 		//remove the class
 
 
