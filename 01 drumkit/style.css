@@ -1,0 +1,32 @@
+body.drum-kit {
+	margin: 0;
+	background-image: url("beatles.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+ul.drum-kit {
+	width: 80%;
+	height: 100vh;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-family: Verdana;
+	font-size: 30px;
+	color: white;
+}
+
+.key {
+	list-style: none;
+	padding: 10px 20px;
+	border: 2px solid white;
+	border-radius: 10px;
+	transition: all 0.07s ease;
+}
+
+.playing {
+	transform: scale(1.2);
+	border: 2px solid yellow;
+}
+
