@@ -88,32 +88,36 @@
   </div>
 
   <script>
-    //need to indexOf() method from array
-    const inputs = Array.from(document.querySelectorAll('input'));
-    let index = [];
-    let max, min, inputIndex, i;
+    
+    const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"');
 
-    function checkItem(e) {
-      inputIndex = inputs.indexOf(this);
-      //the box is checked right after you click before running codes below
-      //this is how to access the attribute of input tag
-      if(this["checked"] == true) {
-        index.push(inputIndex);
-        max = Math.max(...index);
-        min = Math.min(...index);
-        console.log(index);
-        for (i = min; i <= max; i++) {
-          inputs[i]["checked"] = true;
-        } 
-      } else {
-        //if not exist, -ve value will delete item from the end
-        if(index.indexOf(inputIndex) < 0) return 
-        index.splice(index.indexOf(inputIndex), 1);  
-        console.log(index);
+    let lastChecked;
+    
+    function handleClick(e) {
+      //switch to check the boxese in between
+      let inBetween = false;
+      //shift key, no need to use keyCode
+      if(e.shiftKey && this.checked) {
+
+        checkboxes.forEach(checkbox => {
+
+          //first hit, switch to true; second hit, to false
+          if(checkbox === this || checkbox === lastChecked) {
+            inBetween = !inBetween;
+          }      
+
+          if(inBetween) {
+            checkbox.checked = true;
+          }
+        })
       }
+      //store the last checked box 
+      lastChecked = this;
     }
 
-    inputs.forEach(input => input.addEventListener('click', checkItem))
+
+    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleClick));
+    
     
 
 
