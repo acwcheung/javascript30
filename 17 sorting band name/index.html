@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Without Articles</title>
+</head>
+<body>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+    }
+    #bands {
+      list-style: inside square;
+      font-size: 20px;
+      background: white;
+      width: 500px;
+      margin: auto;
+      padding: 0;
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    #bands li {
+      border-bottom: 1px solid #efefef;
+      padding: 20px;
+    }
+    
+    #bands li:last-child {
+      border-bottom: 0;
+    }
+    a {
+      color: #ffc600;
+      text-decoration: none;
+    }
+  </style>
+
+  <ul id="bands"></ul>
+
+<script>
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+let bandsNew = [];
+let bandsSorted = [];
+
+bands.forEach(band => {
+  let splitted = band.split(' ');
+  return bandsNew.push(splitted);
+})
+
+bandsNew.forEach(band => {
+  if(band[0] == 'The' || band[0] == 'A' || band[0] == 'An') {
+    let article = band.shift();
+    band.push(article);
+  }
+})
+
+bandsNew.sort((a, b) => a > b? 1: -1);
+
+bandsNew.forEach(band => {
+  if(band[band.length - 1] == 'The' ||
+    band[band.length - 1] == 'A' ||
+    band[band.length - 1] == 'An') {
+    let article = band.pop();
+    band.unshift(article);
+  }
+})
+
+bandsNew.forEach(band => {
+  let item = band.join(' ');
+  bandsSorted.push(item);
+})
+
+const bandList = document.getElementById('bands');
+
+function display() {
+  bandList.innerHTML = bandsSorted.map(band => {
+    console.log(band);
+    return `<li>${band}</li>`;
+  }).join('');
+}
+
+display();
+
+
+
+
+
+</script>
+
+</body>
+</html>
