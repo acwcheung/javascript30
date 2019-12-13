@@ -45,50 +45,15 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
-let bandsNew = [];
-let bandsSorted = [];
-
-bands.forEach(band => {
-  let splitted = band.split(' ');
-  return bandsNew.push(splitted);
-})
-
-bandsNew.forEach(band => {
-  if(band[0] == 'The' || band[0] == 'A' || band[0] == 'An') {
-    let article = band.shift();
-    band.push(article);
-  }
-})
-
-bandsNew.sort((a, b) => a > b? 1: -1);
-
-bandsNew.forEach(band => {
-  if(band[band.length - 1] == 'The' ||
-    band[band.length - 1] == 'A' ||
-    band[band.length - 1] == 'An') {
-    let article = band.pop();
-    band.unshift(article);
-  }
-})
-
-bandsNew.forEach(band => {
-  let item = band.join(' ');
-  bandsSorted.push(item);
-})
-
-const bandList = document.getElementById('bands');
-
-function display() {
-  bandList.innerHTML = bandsSorted.map(band => {
-    console.log(band);
-    return `<li>${band}</li>`;
-  }).join('');
+//strip the article from string with space and then trim the space
+function strip(band) {
+  return band.replace(/^(a |the |an )/i, '').trim();
 }
 
-display();
+//comparing the stripped band, sort by the band (unstrippted)
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b)? 1: -1);
 
-
-
+document.getElementById('bands').innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
 
 
 </script>
