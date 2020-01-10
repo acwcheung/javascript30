@@ -48,6 +48,7 @@
     console.log(totalYears);
 
     // 5. Sort the inventors by years lived
+    //sort a > b: by giving -1, a is placed before b; by giving 1, a is placed after b; descending order!
     let oldest = inventors.sort((a, b) => {
     	let lastGuy = a.passed - a.year;
     	let nextGuy = b.passed - b.year;
@@ -66,17 +67,42 @@
     // 7. sort Exercise
     // Sort the people alphabetically by last name
     let alpha = people.sort((lastOne, nextOne) => {
-    	const {aLast, aFirst} = lastOne.split(", ");
-    	const {bLast, bFirst} = nextOne.split(", ");
-    	return aLast > bLast ? -1: 1;
+    	const [aLast, aFirst] = lastOne.split(", ");
+    	const [bLast, bFirst] = nextOne.split(", ");
+      //arranging lastOne, nextOne, based on the result below
+    	return aLast > bLast ? 1: -1;
     })
     console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    //to test a known item
+    let results = data.reduce((total, item) => {
+      if(item === 'car') {
+      //if total++ is used, return total before adding 1! 
+        return ++total
+      } else {
+        return total
+      };
+    }, 0)
+
+    //to test unknown item
+    let results = data.reduce((obj, item) => {
+      if(!obj[item]) {
+        obj[item] = 1;
+        return obj; //return the obj to accumulate
+      } else {
+        obj[item]++
+        return obj; //return the obj to accumulate
+      }
+    }, {})
+
+    //model answer
     let transportation = data.reduce((obj, item) => {
-    	//you first set up item: 0
+    	//you first set up item
     	if(!obj[item]) {
     		obj[item] = 0;
     	}
